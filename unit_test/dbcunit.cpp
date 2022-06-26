@@ -125,7 +125,7 @@ private:
   int x;
   int y;
 
-  bool _classInvariant() {
+  bool clasInvariant_() {
     return y == x + 2;
   }
 
