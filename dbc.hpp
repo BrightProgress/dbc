@@ -23,13 +23,13 @@
 //
 ///////////////////////
 // class invariant: A class invariant is implemented by a method
-// named clasInvariant_ in the class which returns a boolean
+// named classInvariant_ in the class which returns a boolean
 // value.
 //
 // Typical usage:
 // class SomeClass {
 // private:
-//   bool clasInvariant_();
+//   bool classInvariant_();
 //
 // public:
 //   someType aFunction(...) {
@@ -383,7 +383,7 @@ namespace dbc{
 #endif
 
 
-#define DBC_CLASS_INVARIANT(label) DBC_INVARIANT(label) << [this]{return clasInvariant_();}
+#define DBC_CLASS_INVARIANT(label) DBC_INVARIANT(label) << [this]{return classInvariant_();}
 
 #ifdef DBC_ENABLED
 #define DBC_PRE_POST(label,capture)                                     \
