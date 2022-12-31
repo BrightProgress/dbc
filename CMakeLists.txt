@@ -1,4 +1,5 @@
 cmake_minimum_required(VERSION 3.16)
+set(CMAKE_WINDOWS_EXPORT_ALL_SYMBOLS ON)
 
 project(DBC
     VERSION 0.1.0
@@ -13,7 +14,7 @@ endif()
 
 FIND_PACKAGE( Boost COMPONENTS log REQUIRED )
 
-add_compile_options(-std=c++11 -Wall)
+set (CMAKE_CXX_STANDARD 17)
 
 add_library(dbc SHARED dbc.cpp dbc.hpp)
 target_link_libraries(dbc ${Boost_LOG_LIBRARY})

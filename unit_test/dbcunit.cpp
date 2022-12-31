@@ -6,8 +6,8 @@ TEST(DBCTests, simpleInvariant) {
 }
 
 TEST(DBCTests, failingInvariantPre) {
-  ASSERT_DEATH({DBC_INVARIANT(failingPre) << []{return false;};},
-               "Assertion `false' failed");
+  EXPECT_DEATH({DBC_INVARIANT(failingPre) << []{return false;};},
+               "Assertion");
 }
 
 void failedPostInvariant(){
@@ -18,8 +18,8 @@ void failedPostInvariant(){
 }
 
 TEST(DBCTests, failingInvariantPost) {
-  ASSERT_DEATH(failedPostInvariant(), 
-               "Assertion `false' failed");
+  EXPECT_DEATH(failedPostInvariant(), 
+               "Assertion");
 }
 
 void trivialAssumeGuarantee(){
@@ -48,8 +48,8 @@ void simpleAssumeGuaranteeFailPre(){
 }
 
 TEST(DBCTests, simpleAssumeGauaranteeFailPre) {
-  ASSERT_DEATH(simpleAssumeGuaranteeFailPre(), 
-               "Assertion `false' failed");
+  EXPECT_DEATH(simpleAssumeGuaranteeFailPre(), 
+               "Assertion");
 }
 
 void simpleAssumeGuaranteeFailPost(){
@@ -60,8 +60,8 @@ void simpleAssumeGuaranteeFailPost(){
 }
 
 TEST(DBCTests, simpleAssumeGauaranteeFailPost) {
-  ASSERT_DEATH(simpleAssumeGuaranteeFailPost(), 
-               "Assertion `false' failed");
+  EXPECT_DEATH(simpleAssumeGuaranteeFailPost(), 
+               "Assertion");
 }
 
 void trivialPrePost() {
@@ -100,8 +100,8 @@ void simplePrePostFailPre() {
 }
 
 TEST(DBCTests, simplePrePostFailPre) {
-  ASSERT_DEATH(simplePrePostFailPre(), 
-               "Assertion `false' failed");
+  EXPECT_DEATH(simplePrePostFailPre(), 
+               "Assertion");
 }
 
 void simplePrePostFailPost() {
@@ -116,8 +116,8 @@ void simplePrePostFailPost() {
 }
 
 TEST(DBCTests, simplePrePostFailPost) {
-  ASSERT_DEATH(simplePrePostFailPost(), 
-               "Assertion `false' failed");
+  EXPECT_DEATH(simplePrePostFailPost(), 
+               "Assertion");
 }
 
 class ClassWithInvariant {
@@ -161,11 +161,11 @@ public:
 TEST(DBCTests, classInvariants) {
   ClassWithInvariant c1(3);
   SUCCEED();
-  ASSERT_DEATH({ClassWithInvariant c2(3,4);}, 
-               "Assertion `false' failed");
+  EXPECT_DEATH({ClassWithInvariant c2(3,4);}, 
+               "Assertion");
   c1.addOne();
-  ASSERT_DEATH({c1.addOneBad();}, 
-               "Assertion `false' failed");
+  EXPECT_DEATH({c1.addOneBad();}, 
+               "Assertion");
 }
 
 void loopVariantFail() {
@@ -177,8 +177,8 @@ void loopVariantFail() {
 }
 
 TEST(DBCTests, loopVariantFail) {
-  ASSERT_DEATH(loopVariantFail(), 
-               "Assertion `false' failed");
+  EXPECT_DEATH(loopVariantFail(), 
+               "Assertion");
 }
 
 TEST(DBCTests, loopVariantTrue) {
@@ -202,8 +202,8 @@ void loopInvariantFail() {
 }
 
 TEST(DBCTests, loopInvariantFail) {
-  ASSERT_DEATH(loopInvariantFail(), 
-               "Assertion `false' failed");
+  EXPECT_DEATH(loopInvariantFail(), 
+               "Assertion");
 }
 
 TEST(DBCTests, loopInvariantTrue) {

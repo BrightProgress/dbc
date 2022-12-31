@@ -174,11 +174,11 @@ namespace dbc{
   struct variant_struct {};
   struct loop_invariant_struct {};
 
-  extern assume_struct assume;
-  extern guarantee_struct guarantee;
-  extern pre_struct pre;
-  extern post_struct post;
-  extern loop_invariant_struct loop_invariant;
+  const assume_struct assume;
+  const guarantee_struct guarantee;
+  const pre_struct pre;
+  const post_struct post;
+  const loop_invariant_struct loop_invariant;
 
   // Pre-Post contract
   template <typename T> class pre_post{
@@ -360,10 +360,10 @@ namespace dbc{
     return a;
   }
 
-  extern invariant dbc_invariant_true;
-  extern pre_post_true dbc_pre_post_true;
-  extern assume_guarantee_true dbc_assume_guarantee_true;
-  extern loop_true dbc_loop_true;
+  const invariant dbc_invariant_true("default");
+  const pre_post_true dbc_pre_post_true;
+  const assume_guarantee_true dbc_assume_guarantee_true;
+  const loop_true dbc_loop_true;
 }
 
 //

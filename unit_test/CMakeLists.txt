@@ -12,12 +12,10 @@ FetchContent_Declare(
 set(gtest_force_shared_crt ON CACHE BOOL "" FORCE)
 FetchContent_MakeAvailable(googletest)
 
-link_libraries(gtest_main)
-link_libraries(dbc)
-
-
 add_definitions(-DDBC_ENABLED)
 add_executable(dbc_unit dbcunit.cpp)
 # Only test DBC in debug configuration!
+
+target_link_libraries(dbc_unit dbc gtest_main)
 
 gtest_discover_tests(dbc_unit PROPERTIES DISABLED $<$<NOT:$<CONFIG:Debug>>:True>)
